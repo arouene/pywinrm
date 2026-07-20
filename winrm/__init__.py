@@ -72,7 +72,8 @@ class Session(object):
             try:
                 # remove the namespaces from the xml for easier processing
                 msg_xml = self._strip_namespace(msg_xml)
-                root = ET.fromstring(msg_xml)
+                string_xml = msg_xml.decode('cp437')
+                root = ET.fromstring(string_xml)
                 # the S node is the error message, find all S nodes
                 nodes = root.findall("./S")
                 new_msg = ""
